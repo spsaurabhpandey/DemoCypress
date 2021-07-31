@@ -17,8 +17,13 @@ steps:
 
 - script: |
     npm install
-    npm run test-headless
-  displayName: 'npm install and test-headless'
+  displayName: 'npm install'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'run test-headless'
+  continueOnError: true
 
 - task: PublishTestResults@2
   inputs:
